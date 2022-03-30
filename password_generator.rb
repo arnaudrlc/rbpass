@@ -24,8 +24,8 @@ end
 
 def get_ratios(password_total_length)
   letters = password_total_length / 2
-  schars = digits = letters / 4
-  return letters, digits, schars
+  schars = digits = letters / 2
+  return letters - 1, digits, schars
 end
 
 
@@ -35,7 +35,7 @@ def password_generator(password_total_length=12)
     if password_total_length >= 8 then
       pwd = Array.new
       letters_amount, digits_amount, schars_amount = *get_ratios(password_total_length)
-      for i in 0...letters_amount  # In Ruby: .. is inclusive, ... is exclusive.
+      for i in 0...letters_amount # In Ruby: .. is inclusive, ... is exclusive.
         pwd.push ALPHABET[SecureRandom.random_number(ALPHABET.length())]
       end
       for i in 0...digits_amount
