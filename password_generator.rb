@@ -24,19 +24,19 @@ def get_ratios(password_total_length)
 end
 
 # Generates a complex password.
-def password_generator(password_total_length=12)
+def password_generator(password_total_length = 12)
   raise PasswordLengthError unless password_total_length >= 8
 
-  pwd = Array.new
+  pwd = []
   letters_amount, digits_amount, schars_amount = *get_ratios(password_total_length)
-  (0...letters_amount).each do # In Ruby: .. is inclusive, ... is exclusive.
-    pwd.push ALPHABET[SecureRandom.random_number(ALPHABET.length())]
+  (0...letters_amount).each do
+    pwd.push ALPHABET[SecureRandom.random_number(ALPHABET.length)]
   end
   (0...digits_amount).each do
-    pwd.push DIGITS[SecureRandom.random_number(DIGITS.length())]
+    pwd.push DIGITS[SecureRandom.random_number(DIGITS.length)]
   end
   (0...schars_amount).each do
-    pwd.push SPECIAL_CHARACTERS[SecureRandom.random_number(SPECIAL_CHARACTERS.length())]
+    pwd.push SPECIAL_CHARACTERS[SecureRandom.random_number(SPECIAL_CHARACTERS.length)]
   end
   pwd = pwd.shuffle
   pwd.join('')
