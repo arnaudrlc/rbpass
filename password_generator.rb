@@ -40,7 +40,7 @@ def password_generator(password_total_length = 12)
   end
   pwd = pwd.shuffle
   pwd.join('')
-rescue PasswrdLengthError => e
+rescue PasswordLengthError => e
   puts e.message
 end
 
